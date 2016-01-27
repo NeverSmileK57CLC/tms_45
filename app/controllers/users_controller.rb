@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
     @user_courses = UserCourse.joined_as_trainee @user
     @user_subjects = UserSubject.all
+    @user_tasks = UserTask.all
   end
 
   def new

@@ -7,30 +7,32 @@
     <div class="text-info">
       <p><%= @subject.description %></p><br>
     </div>
-    <%= form_for @user_subject, url: user_subject_path(@user_subject, method: :patch) do |f| %>
-      <div class="row">
-        <%= f.fields_for :user_tasks do |builder| %>
-          <div class="col-md-2">
-            <% if builder.object.id.nil? %>
-              <div class="thumbnail text-center task">
-                <h4><%= builder.object.task.name %></h4>
-                <p><%= builder.check_box :task_id, {checked: false},
-                  builder.object.task.id %></p>
-                <%= builder.hidden_field :finish, value: true %>
-                <%= builder.hidden_field :user_id, value: @user_subject.user.id %>
-              </div>
-            <% else %>
-              <div class="thumbnail thumbnail-disable text-center task">
-                <h4><%= builder.object.task.name %></h4>
-                <p><%= builder.check_box :task_id, {checked: true, disabled: true} %></p>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-      <div class="form-group">
-        <%= f.submit t("client.subjects.submit"), class: "btn btn-primary" %>
-      </div>
+    <% if @subject.tasks.present? %>
+      <%= form_for @user_subject, url: user_subject_path(@user_subject, method: :patch) do |f| %>
+        <div class="row">
+          <%= f.fields_for :user_tasks do |builder| %>
+            <div class="col-md-2">
+              <% if builder.object.id.nil? %>
+                <div class="thumbnail text-center task">
+                  <h4><%= builder.object.task.name %></h4>
+                  <p><%= builder.check_box :task_id, {checked: false},
+                    builder.object.task.id %></p>
+                  <%= builder.hidden_field :finish, value: true %>
+                  <%= builder.hidden_field :user_id, value: @user_subject.user.id %>
+                </div>
+              <% else %>
+                <div class="thumbnail thumbnail-disable text-center task">
+                  <h4><%= builder.object.task.name %></h4>
+                  <p><%= builder.check_box :task_id, {checked: true, disabled: true} %></p>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="form-group">
+          <%= f.submit t("client.subjects.submit"), class: "btn btn-primary" %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

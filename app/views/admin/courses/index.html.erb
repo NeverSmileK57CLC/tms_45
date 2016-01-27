@@ -1,5 +1,7 @@
 <%= provide :title, t("admin.courses.all_courses") %>
-<h1><%= t "admin.courses.all_courses" %></h1>
+<div class="page-header">
+  <h1><%= t "courses.all_courses" %></h1>
+</div>
 <% @courses.each do |course| %>
 <div class="row">
   <div class="col-md-6 col-md-offset-2">
@@ -12,11 +14,11 @@
       </span>
       <% case course.status %>
       <% when "open" %>
-        <%= link_to t("admin.courses.start_course"), admin_course_path(course, 
+        <%= link_to t("admin.courses.start_course"), admin_course_path(course,
           type: Settings.course.status_start), data: {confirm: t("messages.confirm")},
           method: :patch, class: "btn btn-sm btn-default" %>
       <% when "started" %>
-        <%= link_to t("admin.courses.finish_course"), admin_course_path(course, 
+        <%= link_to t("admin.courses.finish_course"), admin_course_path(course,
           type: Settings.course.status_finish), data: {confirm: t("messages.confirm")},
           method: :patch, class: "btn btn-sm btn-danger" %>
       <% when "finished" %>

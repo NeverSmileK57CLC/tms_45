@@ -12,10 +12,10 @@ class PasswordResetsController < ApplicationController
       @user.create_reset_digest
       @user.send_password_reset_email
       @user.save
-      flash[:notice] = t "notice.email.sent_password"
+      flash[:success] = t "notice.email.sent_password"
       redirect_to root_path
     else
-      flash.now[:alert] = t "notice.email.not_found"
+      flash.now[:warning] = t "notice.email.not_found"
       render :new
     end
   end

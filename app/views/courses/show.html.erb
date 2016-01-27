@@ -8,13 +8,6 @@
 </div>
 <div class="row">
   <div class="col-md-8">
-    <div class="edit-operation">
-      <%= link_to t("admin.courses.edit"), edit_admin_course_path(@course),
-        class: "btn btn-primary" %>
-      <%= link_to t("admin.courses.delete"), admin_course_path(@course),
-        method: :delete, data: {confirm: t("messages.confirm")},
-        class: "btn btn-danger" %>
-    </div>
   </div>
 </div>
 <div class="row">
@@ -29,7 +22,7 @@
       <h2 class="label-name">
         <%= t "client.courses.subject_info" %>
       </h2>
-      <ul>
+      <ul class="white-in">
         <% @course.subjects.each do |subject| %>
           <h3><%= link_to subject.name, subject %></h3>
           <p><%= subject.description %></p>
@@ -40,7 +33,7 @@
       <h2 class="label-name">
         <%= t "client.courses.trainee_info" %>
       </h2>
-      <ul class="list-trainees">
+      <ul class="list-trainees white-in">
         <% @course.trainees.each do |trainee| %>
           <li class="user_info">
             <%= gravatar_for trainee %>
@@ -55,7 +48,7 @@
       <h2 class="label-name">
         <%= t "client.courses.manager" %>
       </h2>
-      <ul class="list-managers">
+      <ul class="list-managers white-in">
         <% @course.supervisors.each do |supervisor| %>
           <li class="user_info">
             <%= gravatar_for supervisor %>

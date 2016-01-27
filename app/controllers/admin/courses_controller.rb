@@ -11,9 +11,11 @@ class Admin::CoursesController < Admin::AdminController
   end
 
   def create
+    status = params[:course][:status]
+    params[:course][:status] = status.to_i if status.present?
     @course = Course.new course_params
     if @course.save
-      flash[:notice] = t "admin.flash.create_course"
+      flash[:success] = t "admin.flash.create_course"
       redirect_to admin_course_path @course
     else
       @course.build_subject_courses
@@ -30,8 +32,10 @@ class Admin::CoursesController < Admin::AdminController
       @course.update_attributes status: params[:type].to_i
       redirect_to :back
     else
+      status = params[:course][:status]
+      params[:course][:status] = status.to_i if status.present?
       if @course.update_attributes course_params
-        flash[:notice] = t "admin.flash.edit_course"
+        flash[:success] = t "admin.flash.edit_course"
         redirect_to admin_course_path @course
       else
         render :edit
@@ -45,9 +49,9 @@ class Admin::CoursesController < Admin::AdminController
 
   def destroy
     if @course.destroy
-      flash[:notice] = t "admin.courses.delete_success"
+      flash[:success] = t "admin.courses.delete_success"
     else
-      flash[:alert] = t "admin.courses.delete_failure"
+      flash[:warning] = t "admin.courses.delete_failure"
     end
     redirect_to admin_courses_path
   end

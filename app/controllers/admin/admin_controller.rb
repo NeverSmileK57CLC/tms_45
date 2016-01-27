@@ -4,7 +4,7 @@ class Admin::AdminController < ApplicationController
   private
   def verify_admin
     unless logged_in? && current_user.admin?
-      flash[:alert] = t "permission_denied"
+      flash[:warning] = t :permission_denied
       redirect_to root_url
     end
   end

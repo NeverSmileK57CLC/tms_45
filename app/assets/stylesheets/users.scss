@@ -1,3 +1,20 @@
 .user-body {
   padding-top: 20px;
 }
+
+.label-task {
+  padding: 6px;
+}
+
+.pull-right {
+  span {
+    font-size: 15px;
+  }
+}
+
+.user-body {
+  .notice-not-join {
+    text-align: center;
+    font-size: 15px;
+  }
+}

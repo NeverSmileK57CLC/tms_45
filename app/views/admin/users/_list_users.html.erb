@@ -1,0 +1,35 @@
+<table class="table table-hover">
+  <thead>
+    <tr class="info">
+      <th><%= t "admin.users.table.thead.id" %></th>
+      <th><%= t "admin.users.table.thead.name" %></th>
+      <th><%= t "admin.users.table.thead.email" %></th>
+      <th><%= t "admin.users.table.thead.role" %></th>
+      <th><%= t "admin.users.table.thead.created_at" %></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= link_to user.name, user %></td>
+        <td><%= user.email %></td>
+        <td><%= user.role.capitalize %></td>
+        <td><%= user.created_at %></td>
+        <% if current_user? user %>
+          <td></td>
+          <td></td>
+        <% else %>
+          <td><%= link_to t("amin.users.table.thead.edit"), edit_admin_user_path(user),
+            class: "btn btn-primary" %></td>
+          <td>
+            <%= link_to t("admin.users.table.thead.delete"), admin_user_path(user),
+              method: :delete, data: {confirm: t("messages.confirm")}, class: "btn btn-danger" %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

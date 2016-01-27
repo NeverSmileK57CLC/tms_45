@@ -9,6 +9,7 @@ $gray-medium-light: #eaeaea;
 
 body {
   padding-top: 60px;
+  background-color: #F5F5F5;
 }
 
 section {
@@ -160,10 +161,27 @@ footer {
 .user-icon {
   margin-left:20px;
 }
+
 .task {
   background-color: #00C040;
   border-color: #008040;
 }
+
 .thumbnail-disable {
   background-color: rgba(128, 128, 128, 0.45);
+}
+
+.alert {
+  border-left: 3px solid #00C040;
+}
+
+#search_form {
+  padding-bottom: 15px;
+}
+
+#list-users {
+  table {
+    background-color: white;
+    border: 1px solid #ccc;
+  }
 }

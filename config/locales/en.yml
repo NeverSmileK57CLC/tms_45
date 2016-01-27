@@ -20,14 +20,19 @@ en:
   manager_course: "COURSES"
   new_user: "New user?"
   download: "Download"
-
+  nav_bar:
+    courses: "COURSES"
   confirm: "Confirmation"
   update_profile: "Update your profile"
   submit_change: "Save changes"
   edit_user: "Edit user"
   profile_updated: "Profile updated"
   need_login: "Please log in."
+  search_user: "Search by name and email..."
   flash:
+    type:
+      notice: "notice"
+      alert: "alert"
     success:
       create_user: "Create user successfully!"
       update_user: "Update user profile successfully!"
@@ -46,8 +51,12 @@ en:
     confirm: "Are you sure?"
   shared:
     datetime_format: "%d/%m/%Y"
+    not_availble: "N/A"
   users:
     show:
+      tasks:
+        finish: "Finished"
+        training: "Training"
       edit: "Edit profile"
       profile: "PROFILE"
   client:
@@ -91,7 +100,7 @@ en:
         status: "Status"
         role: "Role"
       course_joined: "List of course this user joined"
-      not_join_course: "You haven't joined any courses"
+      not_join_course: "This user haven't joined any courses"
       course: "Course:"
       name: "Name"
       email: "Email"
@@ -132,12 +141,9 @@ en:
         select_status: "Select status"
       add_user: "Add user!"
       status:
-        active: "Activated"
-        not_active: "Not activated"
-        progress: "In progress"
-        finish: "Finished"
-        started: "started"
-        finished: "finished"
+        0: "Opening"
+        1: "Started"
+        2: "Finished"
       delete_success: "You have deleted successfully"
       delete_failure: "You can't delete this course"
       all_courses: "All Courses"

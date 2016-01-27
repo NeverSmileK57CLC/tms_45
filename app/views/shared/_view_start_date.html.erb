@@ -1,4 +1,4 @@
-<% if object.start_date && object.end_date %>
-  (<%= object.start_date.strftime t(".datetime_format") if object.start_date.present? %> -
-  <%= object.end_date.strftime t(".datetime_format") if object.end_date.present? %>)
-<% end %>
+(<%= object.start_date.present? ? object.start_date.strftime(
+  t("shared.datetime_format")) : t("shared.not_availble") %> -
+<%= object.end_date.present? ? object.end_date.strftime(
+  t("shared.datetime_format")) : t("shared.not_availble") %>)

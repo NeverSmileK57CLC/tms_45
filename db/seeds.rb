@@ -26,7 +26,7 @@ end
 
 12.times do |n|
   name = "Subject #{n}"
-  description = Faker::Lorem.paragraphs
+  description = Faker::Lorem.paragraphs.first
   tasks = {}
   4.times do |m|
     tasks["#{m}"] = {name: "Task #{m}"}
@@ -41,6 +41,7 @@ course = Course.create! name: "JavaScript Road Trip Part 1",
     language. Build a foundation of JavaScript syntax and learn how to use values, variables, and files.",
   status: 0,
   start_date: Time.now,
+  end_date: Time.now,
   subjects_attributes: {
     "0": {name: "The Cliffs of Value",
       description: "Learn to manipulate values on the console.",

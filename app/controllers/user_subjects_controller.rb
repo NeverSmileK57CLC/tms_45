@@ -11,9 +11,9 @@ class UserSubjectsController < ApplicationController
 
   def update
     if @user_subject.update_attributes user_subject_params
-      flash[:notice] = t "client.user_subject.finish_task_success"
+      flash[:success] = t "client.user_subject.finish_task_success"
     else
-      flash[:alert] = t "client.user_subject.finish_task_fail"
+      flash[:warning] = t "client.user_subject.finish_task_fail"
     end
     redirect_to @user_subject
   end

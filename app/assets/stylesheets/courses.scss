@@ -1,9 +1,11 @@
 h1.label-name {
   text-align: left;
 }
+
 h2.label-name {
   text-align: left;
 }
+
 .user_info {
   .name-email {
     float: right;
@@ -12,6 +14,7 @@ h2.label-name {
     font-size: 20px;
   }
 }
+
 .list-trainees, .list-managers {
   li {
     list-style: none;
@@ -20,21 +23,31 @@ h2.label-name {
     padding-top: 10px;
   }
 }
+
 .edit-operation {
   float: right;
 }
+
 .badge {
   margin-left: 10px;
   margin-bottom: 4px;
 
 }
+
 .activity {
   padding-left: 30px;
 }
+
 .header-course {
   padding: 50px;
   border: 1px solid rgba(119, 119, 119, 0.2);
   background-color: rgba(119, 119, 119, 0.18);
   margin-bottom: 15px;
   border-radius: 10px;
+}
+
+.white-in {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
 }

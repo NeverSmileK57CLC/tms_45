@@ -20,7 +20,7 @@
 </div>
 <div class="row user-body">
   <% if @user_courses.blank? %>
-    <p><%= t "admin.users.not_join_course" %></p>
+    <p class="notice-not-join"><%= t "admin.users.not_join_course" %></p>
   <% else %>
     <div class="col-md-9">
       <% @user_courses.each do |user_course| %>
@@ -31,7 +31,11 @@
               <%= t "admin.users.course" %> <%= course.name.upcase %>
               <%= t "admin.courses.form.start_date" %>
               <%= render "shared/view_start_date", object: course %>
+              <div class="pull-right">
+                <%= render "shared/status_label", label: course.status %>
+              </div>
             </h5>
+
           </div>
           <table class="table subject-table">
             <tbody>
@@ -39,7 +43,7 @@
                 |user_subject, index| %>
                 <% tasks = user_subject.subject.tasks %>
                 <tr>
-                  <th><%= user_subject.subject.name %></th>
+                  <th><%= link_to user_subject.subject.name, user_subject %></th>
                   <td>
                     <%= t "client.users.start_date" %>
                     <%= render "shared/view_start_date", object: user_subject %>
@@ -53,7 +57,13 @@
                   <tr class="collapseTask<%= index %> collapse in">
                     <td><%= task.name %></td>
                     <td></td>
-                    <td></td>
+                    <td>
+                      <% if @user_tasks.has_task(@user, task).present? %>
+                        <span class="label label-task label-default"><%= t ".tasks.finish" %></span>
+                      <% else %>
+                        <span class="label label-task label-success"><%= t ".tasks.training" %></span>
+                      <% end %>
+                    </td>
                     <td></td>
                   </tr>
                 <% end %>
