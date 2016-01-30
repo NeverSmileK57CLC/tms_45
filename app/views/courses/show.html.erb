@@ -64,6 +64,19 @@
     <div class="row activity">
       <h2 class="label-name">
         <%= t "client.courses.activity" %>
+        <ul>
+          <% if @activities %>
+            <% @activities.each do |activity| %>
+              <li>
+                <%= activity.content %>
+                <span class="timestamp">
+                  <%= time_ago_in_words activity.created_at %>
+                  <%= t "activity.ago" %>
+               </span>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
       </h2>
     </div>
   </div>

@@ -50,7 +50,7 @@ class Course < ActiveRecord::Base
 
   class << self
     def search search
-      search.present? ? where("name LIKE ?", "%#{search}%") : all
+      search.present? ? where("lower(name) LIKE lower(?)", "%#{search}%") : all
     end
   end
 

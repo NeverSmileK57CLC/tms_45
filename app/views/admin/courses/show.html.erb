@@ -101,9 +101,9 @@
             <% @activities.each do |activity| %>
               <li>
                 <%= activity.content %>
-                <span class="timestamp"> 
+                <span class="timestamp">
                   <%= time_ago_in_words activity.created_at %>
-                 <%= t "activity.ago" %>
+                  <%= t "activity.ago" %>
                </span>
               </li>
             <% end %>

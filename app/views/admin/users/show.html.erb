@@ -36,9 +36,7 @@
             <td><%= user_course.course.name %></td>
             <td><%= user_course.course.start_date %></td>
             <td>
-              <span class="label label-<%= user_course.active ? 'success' : 'default' %>">
-                <%= user_course.active ? t(".active") : t(".not_active") %>
-              </span>
+              <%= render "shared/status_label", label: user_course.status %>
             </td>
             <td>
               <span class="label label-<%= user_course.supervisor ? 'danger' : 'success' %>">

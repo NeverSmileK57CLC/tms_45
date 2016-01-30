@@ -2,7 +2,7 @@ class Admin::UsersController < Admin::CoursesController
   before_action :load_user, except: [:index, :create, :new]
 
   def index
-    search_user = User.search params[:search]
+    search_user = User.search(params[:search]).order :id
     @users = search_user.paginate page: params[:page]
     @all_users = User.all
     respond_to do |format|
@@ -37,7 +37,7 @@ class Admin::UsersController < Admin::CoursesController
   def update
     if @user.update_attributes user_params
       flash[:success] = t "flash.success.update_user"
-      redirect_to root_url
+      redirect_to admin_users_path
     else
       render :edit
     end

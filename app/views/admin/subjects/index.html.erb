@@ -6,6 +6,7 @@
       <th><%= t "admin.subjects.table.thead.name" %></th>
       <th><%= t "admin.subjects.table.thead.description" %></th>
       <th><%= t "admin.subjects.table.thead.created_at" %></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -15,6 +16,12 @@
         <td><%= link_to subject.name, [:admin, subject] %></td>
         <td><%= subject.description.truncate(50) %></td>
         <td><%= subject.created_at %></td>
+        <td>
+          <%= link_to t("amin.users.table.thead.edit"), edit_admin_subject_path(subject),
+            class: "btn btn-primary" %>
+          <%= link_to t("admin.users.table.thead.delete"), admin_subject_path(subject),
+            method: :delete, data: {confirm: t("messages.confirm")}, class: "btn btn-danger" %>
+        </td>
       </tr>
     <% end %>
   </tbody>

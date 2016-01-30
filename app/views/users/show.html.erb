@@ -80,7 +80,7 @@
                 <td><%= user_course.course.name %></td>
                 <td><%= user_course.course.start_date %></td>
                 <td><%= user_course.status %></td>
-                <td><%= user_course.supervisor %></td>
+                <td><%= user_course.supervisor ? t(".supervisor") : t(".trainee") %></td>
               </tr>
             <% end %>
           <% end %>

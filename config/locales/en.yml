@@ -38,6 +38,7 @@ en:
   need_login: "Please log in."
   search_user: "Search by name and email..."
   search_course: "Search by name..."
+  cannot_finish: "You can't finish tasks in this subject"
   flash:
     type:
       notice: "notice"
@@ -66,6 +67,8 @@ en:
     not_availble: "N/A"
   users:
     show:
+      supervisor: "Supervisor"
+      trainee: "Trainee"
       tasks:
         finish: "Finished"
         training: "Training"
@@ -164,6 +167,7 @@ en:
       all_courses: "All Courses"
       view_course: "View Course"
     subjects:
+      all: "All subjects"
       started_subject: "started"
       finished_subject: "finished"
       start_subject: "Start subject"

@@ -18,7 +18,7 @@ class Admin::SubjectsController < Admin::AdminController
     @subject = Subject.new subject_params
     if @subject.save
       flash[:success] = t "admin.flash.create_subject"
-      redirect_to root_url
+      redirect_to admin_subjects_path
     else
       render :new
     end
@@ -30,7 +30,7 @@ class Admin::SubjectsController < Admin::AdminController
   def update
     if @subject.update_attributes subject_params
       flash[:success] = t "admin.flash.update_subject"
-      redirect_to root_url
+      redirect_to admin_subjects_path
     else
       render :edit
     end
@@ -42,13 +42,13 @@ class Admin::SubjectsController < Admin::AdminController
     else
       flash[:error] = t "admin.flash.del_failed"
     end
-    redirect_to root_url
+    redirect_to admin_subjects_path
   end
 
   private
   def subject_params
     params.require(:subject).permit :name, :description,
-      tasks_attributes: [:id, :name]
+      tasks_attributes: [:id, :name, :_destroy]
   end
 
   def load_subject

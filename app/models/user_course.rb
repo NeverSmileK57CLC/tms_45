@@ -5,7 +5,7 @@ class UserCourse < ActiveRecord::Base
   belongs_to :course
   has_many :user_subjects, dependent: :destroy
 
-  after_save :create_user_subjects
+  after_create :create_user_subjects
   after_save :update_user_subjects_status
 
   scope :joined_by, ->(user) {where user_id: user.id}

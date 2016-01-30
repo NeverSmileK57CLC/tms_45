@@ -50,8 +50,8 @@ class User < ActiveRecord::Base
     end
 
     def search search
-      search.present? ? where("name LIKE :search or email LIKE :search",
-        search: "%#{search}%") : all
+      search.present? ? where("lower(name) LIKE lower(:search) or lower(email)
+        LIKE lower(:search)", search: "%#{search}%") : all
     end
   end
 
