@@ -11,7 +11,7 @@
               <% if course_users.include?(user) %>
                 <%= builder.check_box :_destroy, {checked: true}, 0, 1 %>
                 <%= builder.hidden_field :id, value:
-                  @course.user_courses.first.id %>
+                  @course.user_courses.find_by(user_id: user.id).id %>
               <% else %>
                 <%= builder.check_box :user_id, {checked: false}, user.id, nil %>
                 <%= builder.hidden_field :supervisor, value: true if supervisor %>

@@ -20,6 +20,10 @@
     </div>
   </div>
   <div class="col-md-offset-1">
-    <%= link_to t("courses.view_course"), course, class: "btn btn-primary" %>
+    <% if current_user.admin? || current_user.supervisor?(course) %>
+      <%= link_to t("courses.view_course"), [:admin, course], class: "btn btn-primary" %>
+    <% else %>
+      <%= link_to t("courses.view_course"), course, class: "btn btn-primary" %>
+    <% end %>
   </div>
 </div>

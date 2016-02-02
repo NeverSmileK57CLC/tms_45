@@ -173,7 +173,7 @@ en:
       finished_subject: "finished"
       start_subject: "Start subject"
       finish_subject: "Finish subject"
-      unactive_subject: "Unactive"
+      unactive_subject: "Finished"
       manager: "Manager subjects"
       name_task: "Name Task"
       remove_task: "Remove Task"
