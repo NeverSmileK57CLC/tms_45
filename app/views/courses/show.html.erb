@@ -24,12 +24,14 @@
       </h2>
       <ul class="white-in">
         <% @course.subjects.each do |subject| %>
-          <% user_subject = subject.user_subjects.where(
+          <% if @user_course %>
+            <% user_subject = subject.user_subjects.where(
               user_course_id: @user_course.id, user_id: current_user.id).first %>
+          <% end %>
           <h3><%= link_to subject.name, @user_course ? user_subject : "#" %></h3>
           <p><%= subject.description %></p>
           <% if @course.started? %>
-            <% case user_subject.status %>
+            <% case @user_course ? user_subject.status : @course.status %>
             <% when "started" %>
               <%= link_to t("admin.subjects.finish_subject"), user_subject_path(user_subject,
                 type: Settings.subject_course.status_finish), data: {confirm: t("messages.confirm")},
