@@ -25,6 +25,7 @@ en:
   manager_subject: "SUBJECTS"
   manager_course: "COURSES"
   new_user: "New user?"
+  create_user: "New user"
   download: "Download"
   waiting: "waiting"
   search: "Search"

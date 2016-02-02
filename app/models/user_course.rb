@@ -7,7 +7,6 @@ class UserCourse < ActiveRecord::Base
 
   before_create :set_unique_active
   after_create :create_user_subjects
-  after_save :update_user_subjects_status
 
   scope :joined_by, ->(user) {where user_id: user.id}
   scope :joined_as_trainee, ->(user) {where "user_id = ? AND supervisor = ?",
@@ -38,9 +37,5 @@ class UserCourse < ActiveRecord::Base
         user_subjects.create user: user, subject: subject, status: status
       end
     end
-  end
-
-  def update_user_subjects_status
-    user_subjects.each{|user_subject| user_subject.update status: status} if user_subjects.present?
   end
 end
