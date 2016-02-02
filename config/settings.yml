@@ -26,6 +26,7 @@ user_subject:
 target_type:
   task: 1
   update_course: 1
+  create_course: 1
 tasks:
   complete: 100
   start: 0

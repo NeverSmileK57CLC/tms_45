@@ -21,6 +21,7 @@ class Admin::CoursesController < Admin::AdminController
 
   def create
     @course = Course.new course_params
+    @course.user_id = current_user.id
     if @course.save
       flash[:success] = t "admin.flash.create_course"
       redirect_to admin_course_path @course
@@ -35,6 +36,7 @@ class Admin::CoursesController < Admin::AdminController
   end
 
   def update
+    @course.user_id = current_user.id
     if params[:type]
       @course.update_attributes status: params[:type].to_i
       redirect_to :back
@@ -50,7 +52,7 @@ class Admin::CoursesController < Admin::AdminController
 
   def show
     @subject_courses = SubjectCourse.all
-    @activities = Activity.get_activities @course.user_id,
+    @activities = Activity.get_activities current_user.id,
       Settings.target_type.update_course, @course.id
   end
 

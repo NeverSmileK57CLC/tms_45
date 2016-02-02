@@ -1,4 +1,5 @@
 class UserSubject < ActiveRecord::Base
+  attr_accessor :user_id
   enum status: [:open, :started, :finished]
   belongs_to :user
   belongs_to :subject

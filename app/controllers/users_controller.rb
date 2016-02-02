@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user_courses = UserCourse.joined_as_trainee @user
     @user_subjects = UserSubject.all
     @user_tasks = UserTask.all
+    @activities = @user.activities.paginate page: params[:page]
   end
 
   def new

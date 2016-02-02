@@ -88,4 +88,22 @@
       </table>
     </div>
   <% end %>
+  <div class="activity-border">
+    <span>
+      <h3><%= t "activity.name" %></h3>
+      <ul>
+        <% if @activities %>
+          <% @activities.each do |activity| %>
+            <li>
+              <%= activity.content %>
+              <span class="timestamp">
+                <%= time_ago_in_words activity.created_at %>
+                <%= t "activity.ago" %>
+              </span>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </span>
+  </div>
 </div>

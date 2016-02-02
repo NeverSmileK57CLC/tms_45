@@ -14,6 +14,7 @@ class UserSubjectsController < ApplicationController
   end
 
   def update
+    @user_subject.user_id = current_user.id
     if params[:type]
       @user_subject.update_attributes status: params[:type].to_i
       redirect_to :back

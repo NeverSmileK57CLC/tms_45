@@ -9,8 +9,8 @@ class UserTask < ActiveRecord::Base
   scope :filter_by_user, ->user{where user_id: user.id}
 
   def create_task_activity
-    content = task.name + " " + I18n.t("activity.finished")
-    Activity.update_activity user_id, user_subject.subject,
+    content = I18n.t("activity.finished") + " " + task.name
+    Activity.update_activity user.id, user_subject.subject,
       Settings.target_type.task, content
   end
 end

@@ -13,6 +13,7 @@ class Course < ActiveRecord::Base
   validates :status, presence: true
   validate :valid_deadline
 
+  after_create :create_course_activity
   after_update :update_user_courses
 
   accepts_nested_attributes_for :subject_courses, allow_destroy: true,
@@ -43,9 +44,15 @@ class Course < ActiveRecord::Base
   end
 
   def update_course_activity
-    content = name + " " + I18n.t("activity.updated")
+    content = I18n.t("activity.updated") + " " + name
     Activity.update_activity user_id, self,
       Settings.target_type.update_course, content
+  end
+
+  def create_course_activity
+    content = I18n.t("activity.created") + " " + name
+    Activity.update_activity user_id, self,
+      Settings.target_type.create_course, content
   end
 
   class << self
